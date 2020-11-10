@@ -1,0 +1,75 @@
+
+<html>
+  <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+ 
+<script src="https://cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+<style>
+.export input {
+      font-size: 20px;
+    background: orange;
+    
+    color: white;
+    border: none !important;
+    height: 9%;
+    
+    /* width: 30% !important; */
+    align: center !important;
+    /* right: 50% !important; */
+    border: none !important;
+}
+
+.table>thead>tr>th {
+    background: gray ;
+    height: 50px;
+    color: white;
+    font-size: 22px;
+}
+input#btnExport {
+    background: #76b852 !important;
+}
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+	
+	$("#btnExport").click(function () {
+	
+        $("#empTable").table2excel({
+            filename: "Data.xls"
+        });
+    });
+});
+</script>
+</head>
+ <body>
+<div class = "export">
+<input type="button" id="btnExport" class="btn" value="Export to Excel" /> 
+</div>
+
+<h1>Predicted Data</h1>
+      <table border = 1 class="table table-hover" id="empTable">
+<th>Items</th>
+<th>Prediction Date</th>
+	<th>Predicted waight (kg)</th>
+<th>Predicted volume (in3)</th>
+
+
+{% for row_index in range(data['predected waight']|count) %}
+    <tr>
+<td>{{ data['item'][row_index] }}</td>
+<td>{{ data['Pred_date'][row_index]|tojson|safe }}</td>
+<td>{{ data['predected waight'][row_index]|tojson|safe }}</td>
+      <td>{{ data['predected volume'][row_index]|tojson|safe }}</td>
+
+      
+    </tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
