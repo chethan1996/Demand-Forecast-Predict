@@ -58,7 +58,7 @@ input#btnExport {
 <th>Predicted volume (in3)</th>
 
 
-{% for row_index in range(data['predected waight']|count) %}
+{% for row_index in range(1) %}
     <tr>
 <td>{{ data['item'][row_index] }}</td>
 <td>{{ data['Pred_date'][row_index]|tojson|safe }}</td>
